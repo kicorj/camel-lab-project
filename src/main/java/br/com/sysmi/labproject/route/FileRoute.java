@@ -14,8 +14,8 @@ import br.com.sysmi.labproject.model.Compra;
 @Component
 public class FileRoute extends RouteBuilder {
 
-	private static final String ID = "{{route.file.id}}";
-	private static final String URI = "{{route.file.uri}}";
+	public static final String ID = "{{route.file.id}}";
+	public static final String URI = "{{route.file.uri}}";
 	
 	@Override
 	public void configure() throws Exception {

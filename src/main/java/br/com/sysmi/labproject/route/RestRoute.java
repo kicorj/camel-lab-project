@@ -29,8 +29,10 @@ public class RestRoute extends RouteBuilder {
 		  .bindingMode(RestBindingMode.json);
 		
 		rest("/camel-lab/api/compras")
-			.get("/").consumes("application/json").to(DatabaseRoute.SELECT_URI)
-			.get("/{idCompra}").consumes("application/json").to(DatabaseRoute.SELECT_URI);
+			.get("/").consumes("application/json").route().routeId("1").to(DatabaseRoute.SELECT_URI);
+		
+		rest("/camel-lab/api/compras")
+			.get("/{idCompra}").consumes("application/json").route().routeId("2").to(DatabaseRoute.SELECT_URI);
 	}
 
 }
