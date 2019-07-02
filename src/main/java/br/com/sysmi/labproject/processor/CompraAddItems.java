@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
 import br.com.sysmi.labproject.model.Item;
 import br.com.sysmi.labproject.model.Compra;
 
+/**
+ * Processor que atribui uma lista de itens a um objeto compra e joga no Body
+ * @author FranciscoCardoso
+ *
+ */
 @Component
 public class CompraAddItems implements Processor {
 

@@ -2,15 +2,19 @@ package br.com.sysmi.labproject.route;
 
 import org.apache.camel.builder.PredicateBuilder;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.model.dataformat.JsonLibrary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Component;
 
-import br.com.sysmi.labproject.model.Item;
 import br.com.sysmi.labproject.model.Compra;
+import br.com.sysmi.labproject.model.Item;
 import br.com.sysmi.labproject.processor.CompraAddItems;
 
+/**
+ * Rotas de Banco de dados
+ * @author FranciscoCardoso
+ *
+ */
 @Component
 public class DatabaseRoute extends RouteBuilder {
 
@@ -58,7 +62,6 @@ public class DatabaseRoute extends RouteBuilder {
 		
 		from(INSERT_URI)
 		.id(INSERT_ID)
-		.unmarshal().json(JsonLibrary.Jackson, Compra.class)
 		.doTry()
 			.choice().when(PredicateBuilder.isNotEqualTo((simple("${body.idCompra}")), constant(null)))
 				.setProperty("total",simple("${body.totalOrder}"))

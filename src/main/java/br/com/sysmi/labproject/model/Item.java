@@ -60,7 +60,7 @@ public class Item {
 	}
 	
 	/**
-	 * verifica se é um Item permitido
+	 * verifica se é um Item não permitido
 	 * @return
 	 */
 	public boolean isNotAllowedItem() {
