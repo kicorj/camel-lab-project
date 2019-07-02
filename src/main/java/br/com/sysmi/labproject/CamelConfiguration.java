@@ -36,7 +36,6 @@ public class CamelConfiguration {
 	@Bean(value="jmsConnectionFactory")
 	public PooledConnectionFactory getPooledConnectionFactory() {
 		final PooledConnectionFactory factory = new PooledConnectionFactory();
-//		factory.setIdleTimeout(2 * 60 * 1000);
 		factory.setConnectionFactory(this.getJmsConnectionFactory(brokerPassword));
 		factory.setMaxConnections(10);
 

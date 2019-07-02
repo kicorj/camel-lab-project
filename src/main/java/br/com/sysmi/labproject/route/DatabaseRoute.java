@@ -8,7 +8,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Component;
 
 import br.com.sysmi.labproject.model.Item;
-import br.com.sysmi.labproject.model.Order;
+import br.com.sysmi.labproject.model.Compra;
 import br.com.sysmi.labproject.processor.CompraAddItems;
 
 @Component
@@ -35,9 +35,9 @@ public class DatabaseRoute extends RouteBuilder {
 		.id(SELECT_ID)
 		.choice()
 			.when(PredicateBuilder.isNull(simple("${header.idCompra}")))
-				.to(SQL_SELECT_COMPRA + "&outputClass=" + Order.class.getName())
+				.to(SQL_SELECT_COMPRA + "&outputClass=" + Compra.class.getName())
 			.otherwise()
-				.to(SQL_SELECT_COMPRA_BY_ID + "&outputClass=" + Order.class.getName())
+				.to(SQL_SELECT_COMPRA_BY_ID + "&outputClass=" + Compra.class.getName())
 			.end()
 		.end()
 		.choice()
@@ -58,7 +58,7 @@ public class DatabaseRoute extends RouteBuilder {
 		
 		from(INSERT_URI)
 		.id(INSERT_ID)
-		.unmarshal().json(JsonLibrary.Jackson, Order.class)
+		.unmarshal().json(JsonLibrary.Jackson, Compra.class)
 		.doTry()
 			.choice().when(PredicateBuilder.isNotEqualTo((simple("${body.idCompra}")), constant(null)))
 				.setProperty("total",simple("${body.totalOrder}"))

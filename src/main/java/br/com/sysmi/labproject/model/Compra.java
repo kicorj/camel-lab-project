@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Order {
+public class Compra {
 
 	private Integer idCompra;
 	private String nomeComprador;
@@ -14,12 +14,12 @@ public class Order {
 
 	public static final double minimumTotalAllowed = 300D;
 	
-	public Order() {
+	public Compra() {
 		super();
 	}
 	@Override
 	public String toString() {
-		return "Order [idCompra=" + idCompra + ", nomeComprador=" + nomeComprador + ", identidade=" + identidade
+		return "Compra [idCompra=" + idCompra + ", nomeComprador=" + nomeComprador + ", identidade=" + identidade
 				+ ", items=" + items + "]";
 	}
 	public Integer getIdCompra() {

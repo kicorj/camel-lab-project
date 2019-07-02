@@ -7,7 +7,7 @@ import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
 
 import br.com.sysmi.labproject.model.Item;
-import br.com.sysmi.labproject.model.Order;
+import br.com.sysmi.labproject.model.Compra;
 
 @Component
 public class CompraAddItems implements Processor {
@@ -15,7 +15,7 @@ public class CompraAddItems implements Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		ArrayList<Item> items = ((ArrayList<Item>)exchange.getIn().getBody());
-		Order order = (Order)exchange.getProperty("compra");
+		Compra order = (Compra)exchange.getProperty("compra");
 		order.setItems(items);
 		
 		exchange.getIn().setBody(order);
